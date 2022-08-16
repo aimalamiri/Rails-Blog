@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'UsersController', type: :request do
+RSpec.describe UsersController, type: :request do
   it 'returns 200 Ok for index action on /users' do
     get '/users'
     expect(response).to have_http_status :success
