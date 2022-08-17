@@ -36,3 +36,6 @@
 
 # Ignore ide config dirs
 /.idea
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
