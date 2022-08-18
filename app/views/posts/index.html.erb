@@ -5,20 +5,7 @@
       <%= render 'posts/post', post: post %>
       <div class="mt-2 mb-5">
         <% post.last_five_comments.each do |comment| %>
-          <div class="py-2 my-1 bg-white border-gray-200 px-4 shadow-sm md:w-2/3">
-            <div class="flex flex-row md-10">
-              <img class="w-8 h-8 rounded-full" alt="Anonymous's avatar"
-                   src="<%= comment.user.photo != '' ? comment.user.photo : 'https://xsgames.co/randomusers/avatar.php?g=pixel' %>">
-              <div class="flex-col mt-1">
-                <div class="flex items-center flex-1 px-2 font-bold leading-tight">
-                  <%= comment.user.name %>
-                  <span class="ml-2 text-xs font-normal text-gray-500"><%= distance_of_time_in_words(comment.created_at, DateTime.now) %>
-                    ago</span>
-                </div>
-                <div class="flex-1 px-2 text-sm font-medium leading-loose text-gray-700"><%= comment.text %></div>
-              </div>
-            </div>
-          </div>
+          <%= render 'posts/comment', comment: comment %>
         <% end %>
       </div>
     <% end %>
