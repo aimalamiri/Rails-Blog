@@ -2,7 +2,7 @@
 
 
 <div class="w-1/3 text-right mt-10 mx-auto">
-  <%= form_with model: @post, url: new_user_post_url(current_user), locale: true do |f| %>
+  <%= form_with model: Post, url: user_posts_url(current_user) do |f| %>
     <div class="flex mb-4">
       <%= f.text_field :title, class: 'text-gray-700 rounded-md border-none shadow py-2 w-full', placeholder: 'Enter post title' %>
     </div>
