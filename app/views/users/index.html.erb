@@ -2,7 +2,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
   <% @users.each do |user| %>
     <div class="p-5 bg-white shadow mb-5 flex items-center">
-      <img src="https://xsgames.co/randomusers/avatar.php?g=male" class="h-20 h-20 rounded-full" />
+      <img src="<%= user.photo != '' ? user.photo : 'https://xsgames.co/randomusers/avatar.php?g=pixel' %>" class="h-20 h-20 rounded-full" />
       <div class="pl-5">
         <a class="text-lg font-bold text-gray-700 block" href="<%= user_path(user) %>"><%= user.name %></a>
         <span class="text-xs font-gray-500"><%= user.posts_count %> Posts</span>
