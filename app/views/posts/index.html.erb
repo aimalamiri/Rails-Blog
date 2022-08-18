@@ -1,1 +1,48 @@
-<h1>Hello from posts</h1>
+<div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-3">
+  <div class="p-5 col-span-1 bg-white shadow mb-5">
+    <div class="flex items-center gap-3">
+      <img src="<%= @user.photo != '' ? @user.photo : 'https://xsgames.co/randomusers/avatar.php?g=pixel' %>" class="h-16 h-16 rounded-full"/>
+      <div>
+        <div class="lg:text-xl font-bold text-gray-700 block"><%= @user.name %></div>
+        <span class="text-xs font-gray-500"><%= @user.posts_count %> Posts</span>
+      </div>
+    </div>
+    <div class="text-sm mt-5 text-gray-700">
+      <%= @user.bio %>
+    </div>
+  </div>
+  <div class="col-span-3">
+    <% @user.posts.each do |post| %>
+      <div class="p-5 col-span-4 bg-white">
+        <a href="<%= user_post_path(@user, post) %>" class="text-gray-700 font-bold"><%= post.title %></a>
+        <p class="text-sm py-2"><%= post.text %></p>
+        <div class="flex justify-end gap-10 text-xs">
+          <div>
+            <span class="font-bold text-gray-700"><%= post.likes_count ? post.likes_count : 0 %></span> Likes
+          </div>
+          <div>
+            <span class="font-bold text-gray-700"><%= post.comments_count ? post.comments_count : 0 %></span> Comments
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 mb-5">
+        <% post.last_five_comments.each do |comment| %>
+          <div class="py-2 my-1 bg-white border-gray-200 px-4 shadow-sm md:w-2/3">
+            <div class="flex flex-row md-10">
+              <img class="w-8 h-8 rounded-full" alt="Anonymous's avatar"
+                   src="<%= comment.user.photo != '' ? comment.user.photo : 'https://xsgames.co/randomusers/avatar.php?g=pixel' %>">
+              <div class="flex-col mt-1">
+                <div class="flex items-center flex-1 px-2 font-bold leading-tight">
+                  <%= comment.user.name %>
+                  <span class="ml-2 text-xs font-normal text-gray-500"><%= distance_of_time_in_words(comment.created_at, DateTime.now) %>
+                    ago</span>
+                </div>
+                <div class="flex-1 px-2 text-sm font-medium leading-loose text-gray-700"><%= comment.text %></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
