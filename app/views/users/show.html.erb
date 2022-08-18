@@ -1,1 +1,13 @@
-<h1>Show user with id <%= @user_id %> </h1>
+<div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-3">
+  <%= render 'users/profile' %>
+  <div class="col-span-3">
+    <% @user.last_three_posts.each do |post| %>
+      <div class="mb-4">
+        <%= render 'posts/post', post: post %>
+      </div>
+    <% end %>
+    <div class="flex justify-center">
+      <a href="<%= user_posts_path(@user) %>" class="col-span-4 text-blue-600 hover:opacity-80">Load more</a>
+    </div>
+  </div>
+</div>

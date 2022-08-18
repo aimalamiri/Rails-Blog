@@ -1,1 +1,13 @@
-<h1>Hello from posts</h1>
+<div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-3">
+  <%= render 'users/profile' %>
+  <div class="col-span-3">
+    <% @user.posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+      <div class="mt-2 mb-5">
+        <% post.last_five_comments.each do |comment| %>
+          <%= render 'posts/comment', comment: comment %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

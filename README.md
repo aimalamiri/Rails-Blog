@@ -25,6 +25,7 @@ Clone the repository using the below commands.
 - `cd Rails-Blog`
 -  Make sure to create a database and add it's configuration into the `cofig/database.yml`
 - `rails db:migrate`
+- `bundle exec rake assets:precompile`
 - `rails server`
 
 ### Usage
