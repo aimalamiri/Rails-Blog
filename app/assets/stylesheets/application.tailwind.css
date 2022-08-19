@@ -10,3 +10,11 @@ body {
 body {
   @apply bg-gray-100;
 }
+
+.input {
+  @apply text-gray-700 rounded-md border-none shadow py-2 w-full;
+}
+
+.btn {
+  @apply px-4 py-2 bg-blue-700 text-white hover:opacity-90 cursor-pointer transition duration-300 rounded-md;
+}

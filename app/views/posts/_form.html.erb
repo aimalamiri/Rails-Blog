@@ -1,0 +1,9 @@
+<%= form_with model: Post, url: user_posts_url(current_user) do |f| %>
+  <div class="flex mb-4">
+    <%= f.text_field :title, class: 'input', placeholder: 'Enter post title' %>
+  </div>
+  <div class="flex items-start mb-4">
+    <%= f.text_area :text, class: 'input', placeholder: 'Enter post content here' %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn' %>
+<% end %>

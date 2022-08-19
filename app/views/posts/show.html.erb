@@ -1,7 +1,12 @@
 <div class="p-5 col-span-4 bg-white">
   <div class="text-gray-700 font-bold"><%= @post.title %></div>
   <p class="text-sm py-2"><%= @post.text %></p>
-  <div class="flex justify-end gap-10 text-xs">
+  <div class="flex justify-end items-center gap-10 text-xs">
+    <div>
+      <%= form_with model: Like, url: user_post_likes_url(current_user, @post) do |f| %>
+        <%= f.submit '❤️', class: 'text-2xl text-red-500' %>
+      <% end %>
+    </div>
     <div>
       <span class="font-bold text-gray-700"><%= @post.likes_count ? @post.likes_count : 0 %></span> Likes
     </div>
@@ -11,7 +16,18 @@
   </div>
 </div>
 <div class="mt-2 mb-5">
-  <% @post.comments.each do |comment| %>
+  <%= form_with model: Comment, url: user_post_comments_url(current_user, @post) do |f| %>
+    <div class="flex gap-3 my-4">
+      <%= f.text_area 'text', class: 'input', placeholder: 'What\'s your opinion?' %>
+      <%= f.hidden_field 'user_id', value: current_user.id %>
+      <%= f.hidden_field 'post_id', value: @post.id %>
+      <div class="flex items-end">
+        <%= f.submit 'Comment', class: 'btn' %>
+      </div>
+    </div>
+  <% end %>
+
+  <% @post.comments.order(created_at: :DESC).each do |comment| %>
     <%= render 'posts/comment', comment: comment %>
   <% end %>
 </div>
