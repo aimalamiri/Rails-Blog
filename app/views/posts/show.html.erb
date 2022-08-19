@@ -22,7 +22,7 @@
     </div>
   <% end %>
 
-  <% @post.comments.each do |comment| %>
+  <% @post.comments.order(created_at: :DESC).each do |comment| %>
     <%= render 'posts/comment', comment: comment %>
   <% end %>
 </div>
