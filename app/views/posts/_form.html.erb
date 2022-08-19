@@ -1,0 +1,9 @@
+<%= form_with model: Post, url: user_posts_url(current_user) do |f| %>
+  <div class="flex mb-4">
+    <%= f.text_field :title, class: 'text-gray-700 rounded-md border-none shadow py-2 w-full', placeholder: 'Enter post title' %>
+  </div>
+  <div class="flex items-start mb-4">
+    <%= f.text_area :text, class: 'text-gray-700 rounded-md border-none shadow py-2 w-full', placeholder: 'Enter post content here' %>
+  </div>
+  <%= f.submit 'Submit', class: 'px-4 py-2 bg-blue-700 text-white hover:opacity-90 cursor-pointer transition duration-300 rounded-md' %>
+<% end %>
