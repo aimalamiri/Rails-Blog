@@ -11,9 +11,11 @@
   </div>
 </div>
 <div class="mt-2 mb-5">
-  <%= form_with model: Comment, url: '' do |f| %>
+  <%= form_with model: Comment, url: user_post_comments_url(current_user, @post) do |f| %>
     <div class="flex gap-3 my-4">
       <%= f.text_area 'text', class: 'input', placeholder: 'What\'s your opinion?' %>
+      <%= f.hidden_field 'user_id', value: current_user.id %>
+      <%= f.hidden_field 'post_id', value: @post.id %>
       <div class="flex items-end">
         <%= f.submit 'Comment', class: 'btn' %>
       </div>
