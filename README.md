@@ -8,6 +8,7 @@ This project is full functional blog application, that includes users, posts, co
 
 - Ruby
 - Rails 7.0
+- TailwindCSS
 
 ## Getting Started
 
