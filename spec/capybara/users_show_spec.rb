@@ -14,4 +14,9 @@ RSpec.describe 'Users Page', type: :system do
     visit user_path(@user)
     expect(page).to have_content(@user.name)
   end
+
+  it 'Shows the number of posts created by user' do
+    visit user_path(@user)
+    expect(page).to have_content("#{@user.posts_count} Posts")
+  end
 end
