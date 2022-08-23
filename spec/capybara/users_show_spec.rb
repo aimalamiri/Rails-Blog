@@ -37,4 +37,11 @@ RSpec.describe 'Users Page', type: :system do
     visit user_path(@user)
     expect(page).to have_content('Load more')
   end
+
+  it 'Redirects posts/show page when the user clicks on the post title' do
+    visit user_path(@user)
+    post = @user.posts.first
+    click_link(post.title)
+    expect(page).to have_content(post.title)
+  end
 end
