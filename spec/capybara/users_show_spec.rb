@@ -32,4 +32,9 @@ RSpec.describe 'Users Page', type: :system do
       expect(page).to have_content(post.text)
     end
   end
+
+  it 'Shows Load more button link' do
+    visit user_path(@user)
+    expect(page).to have_content('Load more')
+  end
 end
