@@ -24,4 +24,12 @@ RSpec.describe 'Users Page', type: :system do
     visit user_path(@user)
     expect(page).to have_content(@user.bio)
   end
+
+  it 'Shows the the last 3 posts created by the user' do
+    visit user_path(@user)
+    @user.last_three_posts do |post|
+      expect(page).to have_content(post.title)
+      expect(page).to have_content(post.text)
+    end
+  end
 end
