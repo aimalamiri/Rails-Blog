@@ -19,4 +19,9 @@ RSpec.describe 'Users Page', type: :system do
     visit user_path(@user)
     expect(page).to have_content("#{@user.posts_count} Posts")
   end
+
+  it 'Shows the user bio' do
+    visit user_path(@user)
+    expect(page).to have_content(@user.bio)
+  end
 end
