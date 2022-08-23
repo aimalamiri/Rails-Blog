@@ -9,4 +9,9 @@ RSpec.describe 'Users Page', type: :system do
     visit user_path(@user)
     expect(page.find('#profile-img')['src']).to have_content(@user.photo)
   end
+
+  it 'Shows the user name' do
+    visit user_path(@user)
+    expect(page).to have_content(@user.name)
+  end
 end
