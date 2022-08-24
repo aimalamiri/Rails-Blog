@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :likes
 
   validates :name, presence: true
-  validates :posts_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :posts_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_blank: true
 
   def last_three_posts
     posts.order(id: :DESC).limit(3)
