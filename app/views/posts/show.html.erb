@@ -1,5 +1,14 @@
 <div class="p-5 col-span-4 bg-white">
-  <div class="text-gray-700 font-bold"><%= @post.title %> <span class="text-gray-500 font-normal">By <%= @post.user.name %></span></div>
+  <div class="flex justify-between">
+    <div class="text-gray-700 font-bold"><%= @post.title %> <span class="text-gray-500 font-normal">By <%= @post.user.name %></span></div>
+    <% if can? :delete, @post %>
+      <%= button_to(
+            "Delete",
+            user_post_path(@post.user, @post),
+            method: :delete
+          ) %>
+    <% end %>
+  </div>
   <p class="text-sm py-2"><%= @post.text %></p>
   <div class="flex justify-end items-center gap-10 text-xs">
     <div>
