@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources 'users', only: %w[index show] do
     resources 'posts', only: %w[index new create show destroy] do
-      resources 'comments', only: %w[create]
+      resources 'comments', only: %w[create destroy]
       resources 'likes', only: %w[create]
     end
   end
