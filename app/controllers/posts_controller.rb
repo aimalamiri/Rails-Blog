@@ -20,6 +20,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    Post.find(params[:id]).likes.delete_all
+    Post.find(params[:id]).comments.delete_all
+    Post.destroy params[:id]
+    redirect_to user_posts_url(user_id: params[:user_id])
+  end
+
   private
 
   def post_params
