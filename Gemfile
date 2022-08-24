@@ -17,6 +17,9 @@ gem 'pg', '~> 1.4', '>= 1.4.2'
 # Use device gem for authentication
 gem 'devise'
 
+# Use cancancan for authorization
+gem 'cancancan'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
