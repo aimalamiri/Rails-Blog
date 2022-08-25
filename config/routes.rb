@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   end
   namespace :api do
     resources 'users', only: %w[index show] do
-      resources 'posts', only: %w[index new create show destroy]
+      resources 'posts', only: %w[index new create show destroy] do
+        get 'comments', to: 'posts#comments'
+      end
     end
   end
 end
