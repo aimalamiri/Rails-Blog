@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources 'users', only: %w[index show] do
       resources 'posts', only: %w[index new create show destroy] do
         get 'comments', to: 'posts#comments'
+        resources 'comments', only: %w[create]
       end
     end
   end
